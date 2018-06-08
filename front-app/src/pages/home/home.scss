@@ -1,3 +1,33 @@
 page-home {
+	.flex-container{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	    align-items: center;
+	    height: calc(100vh - 57px);
+	    background: #4b6cb7;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */
+	    background: -webkit-linear-gradient(left, #182848, #4b6cb7);
+	    background: -o-linear-gradient(left, #182848, #4b6cb7);
+	    background: linear-gradient(to right, #182848, #4b6cb7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	
+	
+		.button-full-md:first-child{
+			margin-bottom: 30px;
+		}
+	
+		.button-full-md{
+			width: 80%;
+		}
+	}
 
+	ion-title{
+		text-align: center;
+	}
 }
+
+	ion-app.md [padding]{
+		.scroll-content{
+			padding: 0;
+			overflow-y: hidden;
+		}
+	}
