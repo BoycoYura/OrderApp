@@ -6,7 +6,9 @@ class DatabaseSeeder extends Seeder {
 
     public function run()
     {
-        $this->call('UserTableSeeder');
+        // $this->call('UserTableSeeder');
+
+        $this->call('ArticleTableSeeder');
 
         $this->command->info('Таблица пользователей заполнена данными!');
     }
@@ -25,5 +27,19 @@ class UserTableSeeder extends Seeder {
             'password' => bcrypt('test@123')
         ]);
     }
+}
+
+class ArticleTableSeeder extends Seeder {
+
+    public function run()
+    {
+        DB::table('articles')->delete();
+
+        DB::table('articles')->insert([
+            'title' => str_random(10),
+            'body' => str_random(10),
+        ]);
+    }
 
 }
+
