@@ -11,12 +11,14 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { SignUpPage } from '../pages/sign-up/sign-up';
 import { RestProvider } from '../providers/rest/rest';
+import { StuffPage } from '../pages/stuff/stuff';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     SignUpPage,
+    StuffPage,
     LoginPage
   ],
   imports: [
@@ -30,6 +32,7 @@ import { RestProvider } from '../providers/rest/rest';
     MyApp,
     HomePage,
     SignUpPage,
+    StuffPage,
     LoginPage
   ],
   providers: [

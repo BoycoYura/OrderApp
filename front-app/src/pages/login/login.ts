@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import 'rxjs/add/operator/toPromise';
+import { HttpClient} from '@angular/common/http';
+import { Injectable} from '@angular/core';
+import { StuffPage } from '../stuff/stuff';
 /**
  * Generated class for the LoginPage page.
  *
@@ -15,11 +18,32 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  data = {
+      "name": "",
+      "email": "",
+      "password": ""
+    };
+
+  private apiUrl = 'http://localhost:8000/api/login';
+
+  constructor(public navCtrl: NavController,private httpClient: HttpClient) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
+  }
+
+   getWhat(){
+    this.httpClient.post(this.apiUrl,this.data).subscribe(
+            res => {
+              var serialObj = JSON.stringify(res);
+              localStorage.setItem("myKey", serialObj);
+              this.navCtrl.push(StuffPage);
+            },
+            err => {
+              console.log("Error occured");
+            });
+  	 console.log('User add');
   }
 
 }
