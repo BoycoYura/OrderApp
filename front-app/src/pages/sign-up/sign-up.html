@@ -14,31 +14,31 @@
 
 
 <ion-content padding>
-<ion-list>
+  <form action="" (ngSubmit)="getWhat()">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Name</ion-label>
+        <ion-input type="text" name="name" [(ngModel)]="data.name"></ion-input>
+      </ion-item>
 
-  <ion-item>
-    <ion-label floating>Name</ion-label>
-    <ion-input type="text" value=""></ion-input>
-  </ion-item>
+      <ion-item>
+        <ion-label floating>E-mail</ion-label>
+        <ion-input type="text" name="email" [(ngModel)]="data.email"></ion-input>
+      </ion-item>
 
-  <ion-item>
-    <ion-label floating>E-mail</ion-label>
-    <ion-input type="text" value=""></ion-input>
-  </ion-item>
+      <ion-item>
+        <ion-label floating>Pasword</ion-label>
+        <ion-input type="password" name="password"  [(ngModel)]="data.password"></ion-input>
+      </ion-item>
 
-  <ion-item>
-    <ion-label floating>Pasword</ion-label>
-    <ion-input type="password" value=""></ion-input>
-  </ion-item>
+      <ion-item>
+        <ion-label floating>Confirm Password</ion-label>
+        <ion-input type="password" name="password_confirmation" [(ngModel)]="data.password_confirmation"></ion-input>
+      </ion-item>
+    </ion-list>
 
-   <ion-item>
-    <ion-label floating>Confirm Password</ion-label>
-    <ion-input type="password" value=""></ion-input>
-  </ion-item>
-
-</ion-list>
-
-  <div padding>
-    <button ion-button color="primary" block (click)="getWhat()">Register</button>
-  </div>
+    <div padding>
+      <button ion-button color="primary" block>Register</button>
+    </div>
+  </form>
 </ion-content>
