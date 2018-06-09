@@ -72,7 +72,7 @@ export class SignUpPage {
   }
 
 
-  // getWhat(){
+  // getArticles(){
   // 	console.log("function is working");
   // 	this.articles = this.httpClient.get(this.apiUrl);
   // 	this.articles
