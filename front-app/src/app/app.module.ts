@@ -5,12 +5,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpClientModule }   from '@angular/common/http';
 import { FormsModule } from  '@angular/forms'
-
+import { ContactUsComponent } from '../components/contact-us/contact-us';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { SignUpPage } from '../pages/sign-up/sign-up';
-import { RestProvider } from '../providers/rest/rest';
 import { StuffPage } from '../pages/stuff/stuff';
 
 @NgModule({
@@ -19,6 +18,7 @@ import { StuffPage } from '../pages/stuff/stuff';
     HomePage,
     SignUpPage,
     StuffPage,
+    ContactUsComponent,
     LoginPage
   ],
   imports: [
@@ -33,13 +33,13 @@ import { StuffPage } from '../pages/stuff/stuff';
     HomePage,
     SignUpPage,
     StuffPage,
+    ContactUsComponent,
     LoginPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RestProvider
   ]
 })
 export class AppModule {}

@@ -7,30 +7,24 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>stuff-page</ion-title>
+    <ion-title style="margin-top: 40px;text-align: center;">Welcome to App:  {{user_name.name}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-	<div style="margin-top: 40px;text-align: center;" >
-		<h1>Welcome to App:  {{user_name.name}}</h1>
-	</div>
-
 <!-- 	<button (click)="getArticles()">Refresh table products</button> -->
-
 	<div class="products">
 		<div class="product" *ngFor="let product of Allartic" >
 			<p>ID product: {{product.id}}</p>
 			<p>Title: {{product.title}}</p>
 			<p>Body: {{product.body}}</p>
-
 			<button (click)="getID(product.id)">Get ID</button>
 		</div>
-
-
 	</div>
+
+	<button ion-button full (click)="presentModal()">Сдать вещи</button>
 
 	<button (click)="updateArticles()">Change first ID</button>
 </ion-content>

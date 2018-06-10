@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Добавления товара
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)=" toback()">
+        <span ion-text color="primary" showWhen="ios">Cancel</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-list>
+      <ion-item>
+        <ion-label>Тип услуги</ion-label>
+        <ion-select [(ngModel)]="type_service">
+          <ion-option value="nes">Химчистка</ion-option>
+          <ion-option value="n64">Реставрация</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Тип вещи</ion-label>
+        <ion-select [(ngModel)]="type_clothe">
+          <ion-option value="nes">Джинсы</ion-option>
+          <ion-option value="n64">Aутболка</ion-option>
+          <ion-option value="ps">Cвадебное платье</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Способ оплаты</ion-label>
+        <ion-select [(ngModel)]="type_pay">
+          <ion-option value="nes">Наличные</ion-option>
+          <ion-option value="n64">Visa/MasterCard</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <div padding>
+        <button ion-button color="primary" block>Отправить</button>
+    </div>
+</ion-content>

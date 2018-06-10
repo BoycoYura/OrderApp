@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
+import { Component, } from '@angular/core';
+import { IonicPage, NavController, App } from 'ionic-angular';
 import 'rxjs/add/operator/toPromise';
 import { HttpClient} from '@angular/common/http';
-import { Injectable} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { ModalController } from 'ionic-angular';
+import { ContactUsComponent } from '../../components/contact-us/contact-us';
+
 /**
  * Generated class for the StuffPage page.
  *
@@ -33,15 +35,25 @@ export class StuffPage {
       "body": "Article body 2"
     };  
 
-  constructor(public navCtrl: NavController, public app: App,private httpClient: HttpClient) {
+  constructor(
+    public navCtrl: NavController, 
+    public app: App,
+    private httpClient: HttpClient, 
+    public modalCtrl: ModalController
+  ) {
 
-	var returnObj = JSON.parse(localStorage.getItem("myKey"));
-	this.user_name = returnObj.data;
+	  var returnObj = JSON.parse(localStorage.getItem("myKey"));
+	  this.user_name = returnObj.data;
   	console.log('LocalData:'+ returnObj.data.name);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad StuffPage');
+  }
+
+  presentModal() {
+    const modal = this.modalCtrl.create(ContactUsComponent);
+    modal.present();
   }
 
   getArticles(){
@@ -52,9 +64,6 @@ export class StuffPage {
         this.Allartic = data;
       });
   }
-
-
-
 
   updateArticles(){
     this.httpClient.put('http://localhost:8000/api/articles/8',this.data).subscribe(
@@ -70,6 +79,8 @@ export class StuffPage {
   getID(id){
     console.log(id);
   }
+
+
 
   ngOnInit() {
   this.getArticles(); 
