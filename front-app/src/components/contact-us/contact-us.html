@@ -13,11 +13,11 @@
 </ion-header>
 
 <ion-content>
-
+  <form action="" (ngSubmit)="updateArt()">
     <ion-list>
       <ion-item>
         <ion-label>Тип услуги</ion-label>
-        <ion-select [(ngModel)]="type_service">
+        <ion-select >
           <ion-option value="nes">Химчистка</ion-option>
           <ion-option value="n64">Реставрация</ion-option>
         </ion-select>
@@ -25,7 +25,7 @@
 
       <ion-item>
         <ion-label>Тип вещи</ion-label>
-        <ion-select [(ngModel)]="type_clothe">
+        <ion-select >
           <ion-option value="nes">Джинсы</ion-option>
           <ion-option value="n64">Aутболка</ion-option>
           <ion-option value="ps">Cвадебное платье</ion-option>
@@ -34,7 +34,7 @@
 
       <ion-item>
         <ion-label>Способ оплаты</ion-label>
-        <ion-select [(ngModel)]="type_pay">
+        <ion-select >
           <ion-option value="nes">Наличные</ion-option>
           <ion-option value="n64">Visa/MasterCard</ion-option>
         </ion-select>
@@ -44,4 +44,5 @@
     <div padding>
         <button ion-button color="primary" block>Отправить</button>
     </div>
+  </form>
 </ion-content>
