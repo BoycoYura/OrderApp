@@ -16,15 +16,10 @@
 <ion-content padding>
 <!-- 	<button (click)="getArticles()">Refresh table products</button> -->
 	<div class="products">
-		<div class="product" *ngFor="let product of Allartic" >
-			<p>ID product: {{product.id}}</p>
-			<p>Title: {{product.title}}</p>
-			<p>Body: {{product.body}}</p>
-			<button (click)="getID(product.id)">Get ID</button>
+		<div class="product" *ngFor="let order of AllOrders" (click)="openInfo((order.id))">
+			<h1>{{order.name}}</h1>
 		</div>
 	</div>
 
 	<button ion-button full (click)="presentModal()">Сдать вещи</button>
-
-	<button (click)="updateArticles()">Change first ID</button>
 </ion-content>

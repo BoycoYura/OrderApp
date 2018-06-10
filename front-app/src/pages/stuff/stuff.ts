@@ -5,7 +5,7 @@ import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { ModalController } from 'ionic-angular';
 import { ContactUsComponent } from '../../components/contact-us/contact-us';
-
+import { OrderInfoComponent } from '../../components/order-info/order-info';
 /**
  * Generated class for the StuffPage page.
  *
@@ -26,13 +26,18 @@ export class StuffPage {
 
   articles: Observable<any>;
 
-  Allartic : Observable<any>;
+  AllOrders : Observable<any>;
 
-  private apiUrl = 'http://localhost:8000/api/articles';
+  private apiUrl = 'http://localhost:8000/api/orders';
 
   data = {
-      "title": "New article 2",
-      "body": "Article body 2"
+      "name": "",
+      "service_type": "",
+      "clothe_type": "",
+      "pay_type": "",
+      "status": "",
+      "price": "",
+      "customer_id": "",
     };  
 
   constructor(
@@ -47,6 +52,19 @@ export class StuffPage {
   	console.log('LocalData:'+ returnObj.data.name);
   }
 
+  addOrder(){
+    this.httpClient.post(this.apiUrl,this.data).subscribe(
+            res => {
+              console.log(res);
+              console.log('Order add sucessfull');
+            },
+            err => {
+              console.log("Error occured");
+            });
+  	 console.log('User add');
+  }
+
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad StuffPage');
   }
@@ -56,12 +74,17 @@ export class StuffPage {
     modal.present();
   }
 
-  getArticles(){
+  openInfo(id) {
+    const modal = this.modalCtrl.create(OrderInfoComponent,{ userId: id });
+    modal.present();
+  }
+
+  getOrders(){
      console.log("function is working");
      this.articles = this.httpClient.get(this.apiUrl);
      this.articles.subscribe(data => {
-        console.log('Articles: ', data);
-        this.Allartic = data;
+        console.log('Orders: ', data);
+        this.AllOrders = data;
       });
   }
 
@@ -83,10 +106,10 @@ export class StuffPage {
 
 
   ngOnInit() {
-  this.getArticles(); 
+  this.getOrders(); 
 
   setInterval(() => {
-  this.getArticles(); 
+  this.getOrders(); 
   }, 3000);
  }
 

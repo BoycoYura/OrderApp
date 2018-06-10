@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { HttpClientModule }   from '@angular/common/http';
 import { FormsModule } from  '@angular/forms'
 import { ContactUsComponent } from '../components/contact-us/contact-us';
+import { OrderInfoComponent } from '../components/order-info/order-info';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
@@ -18,6 +19,7 @@ import { StuffPage } from '../pages/stuff/stuff';
     HomePage,
     SignUpPage,
     StuffPage,
+    OrderInfoComponent,
     ContactUsComponent,
     LoginPage
   ],
@@ -33,6 +35,7 @@ import { StuffPage } from '../pages/stuff/stuff';
     HomePage,
     SignUpPage,
     StuffPage,
+    OrderInfoComponent,
     ContactUsComponent,
     LoginPage
   ],

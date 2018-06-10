@@ -13,30 +13,35 @@
 </ion-header>
 
 <ion-content>
-  <form action="" (ngSubmit)="updateArt()">
+  <form action="" (ngSubmit)="addOrder()">
     <ion-list>
       <ion-item>
+        <ion-label>Order name:</ion-label>
+        <ion-input name="name" type="text" [(ngModel)]="data.name"></ion-input>
+      </ion-item>
+
+      <ion-item>
         <ion-label>Тип услуги</ion-label>
-        <ion-select >
-          <ion-option value="nes">Химчистка</ion-option>
-          <ion-option value="n64">Реставрация</ion-option>
+        <ion-select [(ngModel)]="data.service_type" name="service_type">
+          <ion-option value="Химчистка">Химчистка</ion-option>
+          <ion-option value="Реставрация">Реставрация</ion-option>
         </ion-select>
       </ion-item>
 
       <ion-item>
         <ion-label>Тип вещи</ion-label>
-        <ion-select >
-          <ion-option value="nes">Джинсы</ion-option>
-          <ion-option value="n64">Aутболка</ion-option>
-          <ion-option value="ps">Cвадебное платье</ion-option>
+        <ion-select [(ngModel)]="data.clothe_type" name="clothe_type">
+          <ion-option value="Джинсы">Джинсы</ion-option>
+          <ion-option value="Футболка">Футболка</ion-option>
+          <ion-option value="Cвадебное платье">Cвадебное платье</ion-option>
         </ion-select>
       </ion-item>
 
       <ion-item>
         <ion-label>Способ оплаты</ion-label>
-        <ion-select >
-          <ion-option value="nes">Наличные</ion-option>
-          <ion-option value="n64">Visa/MasterCard</ion-option>
+        <ion-select [(ngModel)]="data.pay_type" name="pay_type">
+          <ion-option value="Наличные">Наличные</ion-option>
+          <ion-option value="Visa/MasterCard">Visa/MasterCard</ion-option>
         </ion-select>
       </ion-item>
     </ion-list>

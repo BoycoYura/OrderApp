@@ -15,9 +15,15 @@ export class ContactUsComponent {
 
   text: string;
 
+  private apiUrl = 'http://localhost:8000/api/orders';
+
   data = {
-    "title": "New article 2",
-    "body": "Article body 2"
+    "name": "",
+    "service_type": "",
+    "clothe_type": "",
+    "pay_type": "",
+    "status": "На обработке",
+    "customer_id": "",
   };
 
   constructor(public viewCtrl: ViewController, private httpClient: HttpClient) {
@@ -25,15 +31,27 @@ export class ContactUsComponent {
     this.text = 'Hello World';
   }
 
-  updateArt(){
-    this.httpClient.put('http://localhost:8000/api/articles/4',this.data).subscribe(
+  // updateArt(){
+  //   this.httpClient.put(this.apiUrl,this.data).subscribe(
+  //           res => {
+  //             alert(res);
+  //           },
+  //           err => {
+  //             console.log("Error occured");
+  //           });
+  //    console.log('User update');
+  // }
+
+  addOrder(){
+    this.httpClient.post(this.apiUrl,this.data).subscribe(
             res => {
-              alert(res);
+              console.log(res);
+              console.log('Order add sucessfull');
             },
             err => {
               console.log("Error occured");
             });
-     console.log('User update');
+  	 console.log('User add');
   }
 
   toback() {
