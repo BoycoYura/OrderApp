@@ -14,12 +14,23 @@
   
   <ion-content>
     <div class="order-info">
-      <p>Order Name: {{orderName}}</p>
-      <p>Order Type: {{orderType}}</p>
-      <p>Order Clothe: {{orderClothe}}</p>
-      <p>Order Pay: {{orderPay}}</p>
-      <p>Order Status: {{orderStatus}}</p>
+      <p>Имя заказчика услуги: {{orderName}}</p>
+      <p>Тип заказа: {{orderType}}</p>
+      <p>Тип вещи: {{orderClothe}}</p>
+      <p>Тип оплаты: {{orderPay}}</p>
+      <p>Статус заказа: {{orderStatus}}</p>
       <p>Order Price: {{orderPrice}}</p>
+
+      <form action="" (ngSubmit)="updateOrder()">
+      <div class="price-block" *ngIf="AdminState == 1">
+          <ion-item>
+            <ion-label floating>Price</ion-label>
+            <ion-input type="number" name="price" [(ngModel)]="data.price"></ion-input>
+          </ion-item>
+          <button type="submit">Обработать</button>
+      </div>
+
+      </form>
     </div>
 
   </ion-content>

@@ -17,9 +17,11 @@
 <!-- 	<button (click)="getArticles()">Refresh table products</button> -->
 	<div class="products">
 		<div class="product" *ngFor="let order of AllOrders" (click)="openInfo((order.id))">
-			<h1>{{order.name}}</h1>
+        <h2>№{{order.id}}</h2>
+      <h2>{{order.name}}</h2>
+      <h3>{{order.created_at}}</h3>
 		</div>
 	</div>
 
-	<button ion-button full (click)="presentModal()">Сдать вещи</button>
+	<button *ngIf="user_name.is_admin !== 1" ion-button full (click)="presentModal(user_name.name)">Сдать вещи</button>
 </ion-content>

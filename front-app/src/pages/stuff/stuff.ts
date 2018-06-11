@@ -22,7 +22,7 @@ export class StuffPage {
 	public userDetails: any;
 	public myinfo: any;
 
-	public user_name;
+  public user_name;
 
   articles: Observable<any>;
 
@@ -40,6 +40,7 @@ export class StuffPage {
       "customer_id": "",
     };  
 
+
   constructor(
     public navCtrl: NavController, 
     public app: App,
@@ -48,7 +49,7 @@ export class StuffPage {
   ) {
 
 	  var returnObj = JSON.parse(localStorage.getItem("myKey"));
-	  this.user_name = returnObj.data;
+    this.user_name = returnObj.data;
   	console.log('LocalData:'+ returnObj.data.name);
   }
 
@@ -69,8 +70,8 @@ export class StuffPage {
     console.log('ionViewDidLoad StuffPage');
   }
 
-  presentModal() {
-    const modal = this.modalCtrl.create(ContactUsComponent);
+  presentModal(user_order) {
+    const modal = this.modalCtrl.create(ContactUsComponent,{ userOrd: user_order });
     modal.present();
   }
 
@@ -110,7 +111,7 @@ export class StuffPage {
 
   setInterval(() => {
   this.getOrders(); 
-  }, 3000);
+  }, 10000);
  }
 
   

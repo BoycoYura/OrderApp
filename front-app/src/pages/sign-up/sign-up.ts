@@ -4,7 +4,6 @@ import 'rxjs/add/operator/toPromise';
 import { HttpClient} from '@angular/common/http';
 import { Injectable} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { RestProvider } from '../../providers/rest/rest';
 import 'rxjs/add/operator/map';
 
 /**
@@ -32,7 +31,7 @@ export class SignUpPage {
 
   private apiUrl = 'http://localhost:8000/api/register';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private httpClient: HttpClient,public restProvider: RestProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private httpClient: HttpClient) {
   }
 
   ionViewDidLoad() {

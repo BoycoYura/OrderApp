@@ -51,6 +51,7 @@ class LoginController extends Controller
 
         if ($user) {
             $user->api_token = null;
+            $user->name = null;
             $user->save();
         }
 

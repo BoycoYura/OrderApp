@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ViewController } from 'ionic-angular';
+import { ViewController,NavParams } from 'ionic-angular';
 import { HttpClient} from '@angular/common/http';
 /**
  * Generated class for the ContactUsComponent component.
@@ -15,7 +15,13 @@ export class ContactUsComponent {
 
   text: string;
 
+  userOrder;
+
   private apiUrl = 'http://localhost:8000/api/orders';
+
+  constructor(public viewCtrl: ViewController, private httpClient: HttpClient,params: NavParams) {
+    this.userOrder = params.get('userOrd');
+  }
 
   data = {
     "name": "",
@@ -25,11 +31,6 @@ export class ContactUsComponent {
     "status": "На обработке",
     "customer_id": "",
   };
-
-  constructor(public viewCtrl: ViewController, private httpClient: HttpClient) {
-    console.log('Hello ContactUsComponent Component');
-    this.text = 'Hello World';
-  }
 
   // updateArt(){
   //   this.httpClient.put(this.apiUrl,this.data).subscribe(
@@ -43,6 +44,7 @@ export class ContactUsComponent {
   // }
 
   addOrder(){
+    this.data.customer_id = this.userOrder;
     this.httpClient.post(this.apiUrl,this.data).subscribe(
             res => {
               console.log(res);

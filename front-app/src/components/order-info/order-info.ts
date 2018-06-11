@@ -27,15 +27,37 @@ export class OrderInfoComponent {
   orderPay;
   orderStatus;
   orderPrice;
-
   userID;
+  UserOrd;
+  AdminState;
+
+  data = {
+    "status": "Обработан",
+    "price": ""
+  }; 
 
   private apiUrl = 'http://localhost:8000/api/orders/';
 
   constructor(public viewCtrl: ViewController, private httpClient: HttpClient,params: NavParams) {
     {
       this.userID = params.get('userId');
+
+      var returnObj = JSON.parse(localStorage.getItem("myKey"));
+      this.AdminState = returnObj.data.is_admin;
+      console.log('Admin State:'+ this.AdminState);
     }
+  }
+
+  updateOrder(){
+    this.httpClient.put(this.apiUrl + this.userID, this.data).subscribe(
+            res => {
+              console.log(res);
+              this.getOrder();
+            },
+            err => {
+              console.log("Error occured");
+            });
+     console.log('User update');
   }
 
   getID(){
@@ -44,6 +66,14 @@ export class OrderInfoComponent {
 
   toback() {
     this.viewCtrl.dismiss();
+  }
+
+  UpdateController(){
+    var returnObj = JSON.parse(localStorage.getItem("myKey"));
+
+    if(returnObj.data.is_admin == '1'){
+      alert('Welcome admin');
+    }
   }
 
   getOrder(){
@@ -57,6 +87,7 @@ export class OrderInfoComponent {
        this.orderPay = data.pay_type;
        this.orderStatus = data.status;
        this.orderPrice = data.price;
+       this.UserOrd = data.customer_id;
      });
   }
 
