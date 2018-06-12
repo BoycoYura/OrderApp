@@ -13,10 +13,12 @@ export class HomePage {
   private apiUrl = 'http://localhost:8000/api/logout';
 
   user_data = {};
+  userName;
 
   constructor(public navCtrl: NavController,private httpClient: HttpClient) {
 	  var returnObj = JSON.parse(localStorage.getItem("myKey"));
     this.user_data = returnObj;
+    this.userName = returnObj.data.name;
   }
 
   toRegisterPage(){
@@ -35,7 +37,7 @@ export class HomePage {
     this.httpClient.post(this.apiUrl,this.user_data).subscribe(
       res => {
         console.log(res);
-        localStorage.clear();
+        this.userName = ''
         console.log('User Loggout');
       },
       err => {

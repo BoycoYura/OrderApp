@@ -4,8 +4,9 @@ import 'rxjs/add/operator/toPromise';
 import { HttpClient} from '@angular/common/http';
 import { Injectable} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { AlertController } from 'ionic-angular';
+import { StuffPage } from '../stuff/stuff';
 import 'rxjs/add/operator/map';
-
 /**
  * Generated class for the SignUpPage page.
  *
@@ -31,28 +32,49 @@ export class SignUpPage {
 
   private apiUrl = 'http://localhost:8000/api/register';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private httpClient: HttpClient) {
-  }
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    private httpClient: HttpClient,
+    public alertCtrl: AlertController) 
+    {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SignUpPage');
   }
 
-	  // this.restapiService.saveUser(this.user).then((result) => {
-	  //   console.log(result);
-	  // }, (err) => {
-	  //   console.log(err);
-	  // });
+  showAlertError() {
+    const alert = this.alertCtrl.create({
+      title: 'Error!',
+      subTitle: 'You entered incorrect data, try again.!',
+      buttons: ['Try Again']
+    });
+    alert.present();
+  }
 
+  showAlertOk() {
+    const alert = this.alertCtrl.create({
+      title: 'Success!',
+      subTitle: 'Welcome to App!',
+      buttons: ['Continue']
+    });
+    alert.present();
+  }
 
   getWhat(){
-    this.httpClient.post(this.apiUrl,this.data).subscribe(
+    this.httpClient.post(this.apiUrl,this.data)
+    .subscribe(
             res => {
               console.log(res);
+              this.showAlertOk();
+              this.navCtrl.push(StuffPage);
             },
             err => {
-              console.log("Error occured");
+              this.data.password = '';
+              this.data.password_confirmation = '';
+              this.showAlertError();
             });
+            
   	 console.log('User add');
     //
   	//   let info: any = {"email": "Joasgasghn@gmail.com"};

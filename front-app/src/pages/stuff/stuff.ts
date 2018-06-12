@@ -50,7 +50,6 @@ export class StuffPage {
 
 	  var returnObj = JSON.parse(localStorage.getItem("myKey"));
     this.user_name = returnObj.data;
-  	console.log('LocalData:'+ returnObj.data.name);
   }
 
   addOrder(){
