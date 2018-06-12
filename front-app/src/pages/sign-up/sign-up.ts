@@ -5,8 +5,8 @@ import { HttpClient} from '@angular/common/http';
 import { Injectable} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AlertController } from 'ionic-angular';
-import { StuffPage } from '../stuff/stuff';
 import 'rxjs/add/operator/map';
+import { HomePage} from '../home/home';
 /**
  * Generated class for the SignUpPage page.
  *
@@ -20,8 +20,6 @@ import 'rxjs/add/operator/map';
   templateUrl: 'sign-up.html',
 })
 export class SignUpPage {
-
-  articles: Observable<any>;
 
   data = {
       "name": "",
@@ -67,38 +65,14 @@ export class SignUpPage {
             res => {
               console.log(res);
               this.showAlertOk();
-              this.navCtrl.push(StuffPage);
+              this.navCtrl.push(HomePage);
             },
             err => {
               this.data.password = '';
               this.data.password_confirmation = '';
               this.showAlertError();
             });
-            
-  	 console.log('User add');
-    //
-  	//   let info: any = {"email": "Joasgasghn@gmail.com"};
-    //
-    // const req = this.httpClient.post(this.apiUrl+'login', info)
-    //   .subscribe(
-    //     res => {
-    //       console.log(res);
-    //     },
-    //     err => {
-    //       console.log(typeof info);
-    //       console.log(typeof JSON.stringify(info));
-    //       console.log("Error occured");
-    //     }
-    //   );
+  	 console.log('User Logined');
   }
 
-
-  // getArticles(){
-  // 	console.log("function is working");
-  // 	this.articles = this.httpClient.get(this.apiUrl);
-  // 	this.articles
-  //   .subscribe(data => {
-  //     console.log('Articles: ', data);
-  //   });
-  // }
 }

@@ -4,12 +4,6 @@ import 'rxjs/add/operator/toPromise';
 import { HttpClient} from '@angular/common/http';
 import { StuffPage } from '../stuff/stuff';
 import { AlertController } from 'ionic-angular';
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -26,8 +20,11 @@ export class LoginPage {
 
   private apiUrl = 'http://localhost:8000/api/login';
 
-  constructor(public navCtrl: NavController,private httpClient: HttpClient,public alertCtrl: AlertController) {
-  }
+  constructor(
+    public navCtrl: NavController,
+    private httpClient: HttpClient,
+    public alertCtrl: AlertController) {
+    }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');

@@ -1,7 +1,7 @@
 <ion-header>
     <ion-toolbar>
       <ion-title>
-        Добавления товара
+          <h4 class="title-value">{{orderName}}</h4>
       </ion-title>
       <ion-buttons start>
         <button ion-button (click)=" toback()">
@@ -14,12 +14,12 @@
   
   <ion-content>
     <div class="order-info">
-      <p>Имя заказчика услуги: {{orderName}}</p>
-      <p>Тип заказа: {{orderType}}</p>
-      <p>Тип вещи: {{orderClothe}}</p>
-      <p>Тип оплаты: {{orderPay}}</p>
-      <p>Статус заказа: {{orderStatus}}</p>
-      <p>Order Price: {{orderPrice}}</p>
+      <h5 class="title-val" >Имя заказчика услуги: {{orderName}}</h5>
+      <h5 class="title-val" >Тип заказа: {{orderType}}</h5>
+      <h5 class="title-val" >Тип вещи: {{orderClothe}}</h5>
+      <h5 class="title-val" >Тип оплаты: {{orderPay}}</h5>
+      <h5 class="title-val" >Статус заказа: {{orderStatus}}</h5>
+      <h5 class="title-val" *ngIf="orderPrice">Order Price: {{orderPrice}}</h5>
 
       <form action="" (ngSubmit)="updateOrder()">
       <div class="price-block" *ngIf="AdminState == 1">
@@ -27,7 +27,7 @@
             <ion-label floating>Price</ion-label>
             <ion-input type="number" name="price" [(ngModel)]="data.price"></ion-input>
           </ion-item>
-          <button type="submit">Обработать</button>
+          <button ion-button full type="submit">Обработать</button>
       </div>
 
       </form>

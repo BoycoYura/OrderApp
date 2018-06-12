@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { ModalController } from 'ionic-angular';
 import { ContactUsComponent } from '../../components/contact-us/contact-us';
 import { OrderInfoComponent } from '../../components/order-info/order-info';
+import { HomePage } from '../home/home';
 /**
  * Generated class for the StuffPage page.
  *
@@ -19,13 +20,13 @@ import { OrderInfoComponent } from '../../components/order-info/order-info';
   templateUrl: 'stuff.html',
 })
 export class StuffPage {
+
 	public userDetails: any;
 	public myinfo: any;
 
   public user_name;
 
-  articles: Observable<any>;
-
+  orders: Observable<any>;
   AllOrders : Observable<any>;
 
   private apiUrl = 'http://localhost:8000/api/orders';
@@ -41,29 +42,10 @@ export class StuffPage {
     };  
 
 
-  constructor(
-    public navCtrl: NavController, 
-    public app: App,
-    private httpClient: HttpClient, 
-    public modalCtrl: ModalController
-  ) {
-
+  constructor(public navCtrl: NavController, public app: App,private httpClient: HttpClient, public modalCtrl: ModalController) {
 	  var returnObj = JSON.parse(localStorage.getItem("myKey"));
     this.user_name = returnObj.data;
   }
-
-  addOrder(){
-    this.httpClient.post(this.apiUrl,this.data).subscribe(
-            res => {
-              console.log(res);
-              console.log('Order add sucessfull');
-            },
-            err => {
-              console.log("Error occured");
-            });
-  	 console.log('User add');
-  }
-
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad StuffPage');
@@ -81,29 +63,20 @@ export class StuffPage {
 
   getOrders(){
      console.log("function is working");
-     this.articles = this.httpClient.get(this.apiUrl);
-     this.articles.subscribe(data => {
+     this.orders = this.httpClient.get(this.apiUrl);
+     this.orders.subscribe(data => {
         console.log('Orders: ', data);
         this.AllOrders = data;
       });
   }
 
-  updateArticles(){
-    this.httpClient.put('http://localhost:8000/api/articles/8',this.data).subscribe(
-            res => {
-              console.log(res);
-            },
-            err => {
-              console.log("Error occured");
-            });
-     console.log('User update');
+  toHome(){
+    this.navCtrl.push(HomePage);
   }
 
   getID(id){
     console.log(id);
   }
-
-
 
   ngOnInit() {
   this.getOrders(); 
@@ -113,6 +86,5 @@ export class StuffPage {
   }, 10000);
  }
 
-  
 }
 

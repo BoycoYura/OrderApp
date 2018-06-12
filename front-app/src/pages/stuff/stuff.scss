@@ -1,16 +1,60 @@
 page-stuff {
+
+	ion-header{
+		text-align: center;
+
+		.home-back{
+			cursor: pointer;
+
+			ion-icon{
+				font-size: 30px;
+				margin-top: 20px;
+				margin-left: 5px;
+			}
+		}
+
+		ion-title{
+			margin-top: 40px;
+			text-align: center;
+		}
+		
+	}
+
+	.button-inner{
+		display: block;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		font-size: 16px;
+	}
+
 	.products{
 		display: flex;
 		flex-wrap: wrap;
+	    background: -webkit-linear-gradient(left, #182848, #4b6cb7);
+	    background: -o-linear-gradient(left, #182848, #4b6cb7);
+	    background: linear-gradient(to right, #182848, #4b6cb7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	
 
 		.product{
-			width: 100%;
-			box-shadow: 2px 2px 2px 2px grey;
-			padding: 20px;
+			width: 90%;
+			margin: 0 auto;
+			margin-bottom: 10px;
+			margin-top: 10px;
+			// -webkit-box-shadow: 2px 2px 2px 2px grey;
+			// box-shadow: 2px 2px 2px 2px grey;
+			padding: 10px;
 			text-align: center;
-			margin-top: 30px;
-			margin: 10px;
+			margin-top: 10px;
 			cursor: pointer;
+			// color: white;
+			background: #608bd4;
+			color: white;
+			border: 2px solid white;
+
+			.title{
+				margin-bottom: 5px;
+				margin-top: 5px;
+			}
 		}
 	}
 

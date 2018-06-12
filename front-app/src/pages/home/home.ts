@@ -4,6 +4,7 @@ import { LoginPage} from '../login/login';
 import { SignUpPage } from '../sign-up/sign-up';
 import { StuffPage } from '../stuff/stuff';
 import { HttpClient} from '@angular/common/http';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -11,7 +12,6 @@ import { HttpClient} from '@angular/common/http';
 export class HomePage {
 
   private apiUrl = 'http://localhost:8000/api/logout';
-
   user_data = {};
   userName;
 
@@ -37,13 +37,15 @@ export class HomePage {
     this.httpClient.post(this.apiUrl,this.user_data).subscribe(
       res => {
         console.log(res);
-        this.userName = ''
-        console.log('User Loggout');
+
+        var returnObj = JSON.parse(localStorage.getItem("myKey"));
+        this.userName = returnObj.data.name = '';
+        var sObj = JSON.stringify(returnObj);
+        localStorage.setItem("myKey", sObj);
       },
       err => {
         console.log("Error occured");
       });
-
   }
 
 }

@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
 import { ViewController,NavParams } from 'ionic-angular';
 import { HttpClient} from '@angular/common/http';
-/**
- * Generated class for the ContactUsComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
+import { AlertController } from 'ionic-angular';
+
 @Component({
   selector: 'contact-us',
   templateUrl: 'contact-us.html'
@@ -14,12 +10,11 @@ import { HttpClient} from '@angular/common/http';
 export class ContactUsComponent {
 
   text: string;
-
   userOrder;
 
   private apiUrl = 'http://localhost:8000/api/orders';
 
-  constructor(public viewCtrl: ViewController, private httpClient: HttpClient,params: NavParams) {
+  constructor(public viewCtrl: ViewController, private httpClient: HttpClient,params: NavParams,public alertCtrl: AlertController) {
     this.userOrder = params.get('userOrd');
   }
 
@@ -32,32 +27,41 @@ export class ContactUsComponent {
     "customer_id": "",
   };
 
-  // updateArt(){
-  //   this.httpClient.put(this.apiUrl,this.data).subscribe(
-  //           res => {
-  //             alert(res);
-  //           },
-  //           err => {
-  //             console.log("Error occured");
-  //           });
-  //    console.log('User update');
-  // }
-
   addOrder(){
     this.data.customer_id = this.userOrder;
     this.httpClient.post(this.apiUrl,this.data).subscribe(
             res => {
               console.log(res);
               console.log('Order add sucessfull');
+              this.showAlertOk();
             },
             err => {
               console.log("Error occured");
+              this.showAlertOk();
             });
   	 console.log('User add');
   }
 
   toback() {
     this.viewCtrl.dismiss();
+  }
+
+  showAlertError() {
+    const alert = this.alertCtrl.create({
+      title: 'Error!',
+      subTitle: 'You entered incorrect data, try again.!',
+      buttons: ['Try Again']
+    });
+    alert.present();
+  }
+
+  showAlertOk() {
+    const alert = this.alertCtrl.create({
+      title: 'Success!',
+      subTitle: 'You order was add success!',
+      buttons: ['Continue']
+    });
+    alert.present();
   }
 
 }

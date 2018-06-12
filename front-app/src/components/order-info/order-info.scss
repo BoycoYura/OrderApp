@@ -1,3 +1,39 @@
 order-info {
 
+    ion-title .title-value{
+        text-align: center;
+    }
+
+    ion-content{
+        .order-info{
+            margin-top: 30px;
+
+            .title-val{
+                margin-top: 10px;
+                text-align: center;
+                background: #8eafe7;
+                padding: 10px;
+                margin-bottom: 10px;
+                color: white;
+            }
+
+            .price-block{
+                ion-label{
+                    font-size: 16px;
+
+                    ion-button{
+                        margin: 0 auto; margin-top: 20px; width: 90%; 
+                    }
+                }
+
+                ion-input{
+                    border-bottom: 4px solid #488aff;
+                }
+            }
+        
+
+        }
+    }
+
+
 }
