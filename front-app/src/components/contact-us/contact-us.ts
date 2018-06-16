@@ -10,12 +10,16 @@ import { AlertController } from 'ionic-angular';
 export class ContactUsComponent {
 
   text: string;
-  userOrder;
+  userOrder: string;
+  userToken;
 
   private apiUrl = 'http://localhost:8000/api/orders';
 
   constructor(public viewCtrl: ViewController, private httpClient: HttpClient,params: NavParams,public alertCtrl: AlertController) {
     this.userOrder = params.get('userOrd');
+    this.userToken = params.get('userToken');
+    this.data.name = this.userOrder;
+    alert(this.userToken);
   }
 
   data = {
@@ -27,8 +31,9 @@ export class ContactUsComponent {
     "customer_id": "",
   };
 
+
   addOrder(){
-    this.data.customer_id = this.userOrder;
+    this.data.customer_id = this.userToken;
     this.httpClient.post(this.apiUrl,this.data).subscribe(
             res => {
               console.log(res);

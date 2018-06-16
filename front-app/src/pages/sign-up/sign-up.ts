@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import 'rxjs/add/operator/toPromise';
 import { HttpClient} from '@angular/common/http';
 import { Injectable} from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import { AlertController } from 'ionic-angular';
 import 'rxjs/add/operator/map';
 import { HomePage} from '../home/home';

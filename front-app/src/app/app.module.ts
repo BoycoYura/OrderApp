@@ -12,6 +12,7 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { SignUpPage } from '../pages/sign-up/sign-up';
 import { StuffPage } from '../pages/stuff/stuff';
+import { SearchPipe } from './search-pipe';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { StuffPage } from '../pages/stuff/stuff';
     StuffPage,
     OrderInfoComponent,
     ContactUsComponent,
+    SearchPipe,
     LoginPage
   ],
   imports: [

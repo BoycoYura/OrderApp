@@ -5,14 +5,18 @@
   </span>  
   <ion-title>Welcome to App:  {{user_name.name}}</ion-title>
   
+  
 
 </ion-header>
 
+
 <ion-content padding>
-  <button *ngIf="user_name.is_admin !== 1" ion-button full (click)="presentModal(user_name.name)">Сдать вещи</button>
-	<div class="products">
+  <button *ngIf="user_name.is_admin !== 1" ion-button full (click)="presentModal(user_name.name,user_name.api_token)">Сдать вещи</button>
+
+  
+  <div class="products">
 		<div class="product" *ngFor="let order of AllOrders" (click)="openInfo((order.id))">
-      <h4 class="title">№ Заказа:{{order.id}}</h4>
+      <h4 class="title">№ Заказа:{{order.id }}</h4>
       <h4 class="title">{{order.name}}</h4>
       <h4 class="title">{{order.created_at}}</h4>
 		</div>

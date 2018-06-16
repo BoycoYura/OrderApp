@@ -25,6 +25,10 @@ export class StuffPage {
 	public myinfo: any;
 
   public user_name;
+  public UserToken;
+
+  // public searcher;
+  // public userToken;
 
   orders: Observable<any>;
   AllOrders : Observable<any>;
@@ -45,14 +49,16 @@ export class StuffPage {
   constructor(public navCtrl: NavController, public app: App,private httpClient: HttpClient, public modalCtrl: ModalController) {
 	  var returnObj = JSON.parse(localStorage.getItem("myKey"));
     this.user_name = returnObj.data;
+    this.UserToken = returnObj.data.api_token;
+    console.log("User token:"+this.UserToken);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad StuffPage');
   }
 
-  presentModal(user_order) {
-    const modal = this.modalCtrl.create(ContactUsComponent,{ userOrd: user_order });
+  presentModal(user_order, user_token) {
+    const modal = this.modalCtrl.create(ContactUsComponent,{ userOrd: user_order , userToken: user_token });
     modal.present();
   }
 
@@ -66,7 +72,15 @@ export class StuffPage {
      this.orders = this.httpClient.get(this.apiUrl);
      this.orders.subscribe(data => {
         console.log('Orders: ', data);
-        this.AllOrders = data;
+        var maxim = this.UserToken;
+        var Maestro = data.filter(function(order) {
+          console.log("User TOk:"+maxim);
+          return order.customer_id == maxim;
+        },maxim);
+        console.log("User token:"+this.UserToken);
+        console.log("Filtered:");
+        console.log(Maestro);
+        this.AllOrders = Maestro;
       });
   }
 

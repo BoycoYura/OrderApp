@@ -14,6 +14,4 @@ export class RestProvider {
     	console.log('Hello RestProvider Provider');
   	}
 
-  	private apiUrl = 'http://localhost:8000/api/';
-
 }
