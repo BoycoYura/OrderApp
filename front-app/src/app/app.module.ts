@@ -13,6 +13,8 @@ import { LoginPage } from '../pages/login/login';
 import { SignUpPage } from '../pages/sign-up/sign-up';
 import { StuffPage } from '../pages/stuff/stuff';
 import { SearchPipe } from './search-pipe';
+import {NgxPaginationModule} from 'ngx-pagination';
+
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { SearchPipe } from './search-pipe';
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    NgxPaginationModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],

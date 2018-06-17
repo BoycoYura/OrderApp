@@ -27,7 +27,11 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/admin-panel';
+
+    public function redirectTo(){
+        return $redirectTo;
+    }
 
     public function login(Request $request)
     {
@@ -40,6 +44,8 @@ class LoginController extends Controller
                 'data' => $user->toArray(),
             ]);
         }
+
+        $this->redirectTo();
 
         return $this->sendFailedLoginResponse($request);
     }

@@ -19,7 +19,7 @@ export class SearchPipe implements PipeTransform{
     transform(AllOrders: any[],searcher: any){
         //Undefenid
 
-        // if( searcher === undefined) return AllOrders;
+        if( searcher === undefined) return AllOrders;
 
         var Maestro = AllOrders.filter(function(order) {
             return order.price;

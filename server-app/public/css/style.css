@@ -1,0 +1,9 @@
+.orders-info-table thead tr{
+    background: lightblue;
+}
+
+.orders-info-table tr td{
+    width: 300px;
+    text-align: center;
+    border: 2px solid black;
+}

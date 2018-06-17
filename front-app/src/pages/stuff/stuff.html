@@ -15,11 +15,13 @@
 
   
   <div class="products">
-		<div class="product" *ngFor="let order of AllOrders" (click)="openInfo((order.id))">
+		<div class="product" *ngFor="let order of AllOrders | paginate: { itemsPerPage: 5, currentPage: p}" (click)="openInfo((order.id))">
       <h4 class="title">№ Заказа:{{order.id }}</h4>
       <h4 class="title">{{order.name}}</h4>
       <h4 class="title">{{order.created_at}}</h4>
 		</div>
 	</div>
+
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
 
 </ion-content>
