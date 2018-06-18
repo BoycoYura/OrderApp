@@ -12,6 +12,9 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/jquery.min.js') }}" defer></script>
+    <script src="{{ asset('js/bootstrap.js') }}" defer></script>
+    <script src="{{ asset('js/main.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -20,6 +23,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet"></link>
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet"></link>
 </head>
 <body>
     <div id="app">

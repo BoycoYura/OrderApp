@@ -50,7 +50,6 @@ class RegisterController extends Controller
     protected function registered(Request $request, $user)
     {
         $user->generateToken();
-
         return response()->json(['data' => $user->toArray()], 201);
     }
 
@@ -64,8 +63,8 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|max:255',
-            'email' => 'required|sometimes|email|max:255|unique:users',
-            'password' => 'required|sometimes|min:8||unique|confirmed',
+            'email' => 'required|sometimes|email|max:255',
+            'password' => 'required|sometimes|min:8|confirmed',
         ]);
     }
 

@@ -40,10 +40,27 @@ export class SignUpPage {
     console.log('ionViewDidLoad SignUpPage');
   }
 
-  showAlertError() {
+  showAlertError(ms1,ms2,ms3) {
+
+    // console.log("Ms 1:"+ typeof ms1);
+    // console.log("Ms 2:"+ms2);
+    // console.log("Ms 3:"+ms3);
+
+    if(ms1 == "undefined"){
+      ms1 = '';
+    }
+
+    if(ms2 == "undefined"){
+      ms2 = '';
+    }
+
+    if(ms3 == "undefined"){
+      ms3 = '';
+    }
+
     const alert = this.alertCtrl.create({
       title: 'Error!',
-      subTitle: 'You entered incorrect data, try again.!',
+      subTitle: ms1+"<br>"+ms2+"<br>"+ms3,
       buttons: ['Try Again']
     });
     alert.present();
@@ -67,9 +84,9 @@ export class SignUpPage {
               this.navCtrl.push(HomePage);
             },
             err => {
+              this.showAlertError(String(err.error.errors.name),String(err.error.errors.email),String(err.error.errors.password));
               this.data.password = '';
               this.data.password_confirmation = '';
-              this.showAlertError();
             });
   	 console.log('User Logined');
   }

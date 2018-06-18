@@ -61,11 +61,35 @@
                             </td>
 
                             <td>
-                                <button>
-                                    <a href='{{ url('/update') }}?name={{$anket->id}}'>
-                                        Обработать
-                                    </a>
-                                </button>
+
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal_{{$anket->id}}">
+                            Обработать
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="modal_{{$anket->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                <div class="modal-header" style="display:flex;justify-content: center; ">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin: 0;"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Обработать заказ</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="/update" method="POST" id="form_{{$anket->id}}">
+                                        @csrf
+                                        <input type="text" name="order_price"></input>
+                                        <input type="hidden" name="order_id" value="{{$anket->id}}"></input>
+                                        <input type="submit" value="Обработать" ></input>
+                                    </form>
+                                </div>
+                                <!-- <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div> -->
+                                </div>
+                            </div>
+                            </div>
                             </td>
                         </tr>
                     @endforeach
@@ -77,4 +101,5 @@
         </div>
     </div>
 </div>
+
 @endsection

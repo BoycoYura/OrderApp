@@ -31,14 +31,16 @@ class HomeController extends Controller
         return view('home', compact('ankets','name')) ;
     }
 
-    public function updateOrder()
+    public function updateOrder(Request $request)
     {
-        $ankets = Order::all();
+        $order_id = $request->order_id;
 
-        $order_id = $_GET['name'];
+        $price= $request->order_price;
 
         DB::update('update orders set status = "Обработан" where id = ?', [$order_id]);
 
-        DB::update('update orders set price = 200 where id = ?', [$order_id]);
+        DB::update('update orders set price = ? where id = ?', [$price,$order_id]);
+
+        return redirect('home');
     }
 }

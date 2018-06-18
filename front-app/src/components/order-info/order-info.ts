@@ -52,7 +52,6 @@ export class OrderInfoComponent {
     this.httpClient.put(this.apiUrl + this.userID, this.data).subscribe(
             res => {
               console.log(res);
-              this.getOrder();
             },
             err => {
               console.log("Error occured");
@@ -91,8 +90,12 @@ export class OrderInfoComponent {
      });
   }
 
-  ngOnInit() {
-    this.getOrder(); 
-   }
+    ngOnInit() {
+      this.getOrder(); 
+
+      setInterval(() => {
+      this.getOrder(); 
+      }, 10000);
+    }
 
 }
