@@ -26,7 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $ankets = Order::all();
+        // $ankets = Order::all();
+
+        $ankets = DB::table('orders')->paginate(10);
 
         return view('home', compact('ankets','name')) ;
     }

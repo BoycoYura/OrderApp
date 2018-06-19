@@ -22,7 +22,9 @@ Route::get('/admin-panel', function(){
     return view('admin-panel');
 });
 
+
+
 Route::post('/update', 'HomeController@updateOrder')->name('update');
-Route::post('loger', 'AdminActions@index');
-// Route::post('logout', 'Auth\LoginController@logout');
+Route::post('login', 'Auth\LoginController@login')->middleware('admin');
+// Route::post('/loger', 'AdminActions@index')->name('loger');
 // Route::post('register', 'Auth\RegisterController@register');

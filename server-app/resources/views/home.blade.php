@@ -36,9 +36,8 @@
                             </td>
                         </tr>
                     <thead>
-
-                    <tbody>
                     @foreach($ankets as $anket)
+                    <tbody>
                         <tr>
                             <td>
                                 {{$anket->id}}
@@ -92,10 +91,12 @@
                             </div>
                             </td>
                         </tr>
-                    @endforeach
                     </tbody>
-
+                    @endforeach
                 </table>
+                {{ $ankets->links() }}
+
+                
                 </div>
             </div>
         </div>

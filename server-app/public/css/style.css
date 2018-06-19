@@ -7,3 +7,10 @@
     text-align: center;
     border: 2px solid black;
 }
+
+.pagination{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+

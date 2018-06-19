@@ -53,11 +53,21 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         $user = Auth::guard('api')->user();
+        $admin_email = $request->email;
+        $admin_password = $request->password;
 
         if ($user) {
             $user->api_token = null;
             $user->name = null;
             $user->save();
+
+            if($admin_email == "admin@admin.ru" && $admin_password == "admin"){
+                return redirect('home');
+            }
+
+            else{
+                return redirect('/');
+            }
         }
 
         return response()->json([ 'data' => 'User logged out.' ], 200);
